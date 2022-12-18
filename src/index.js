@@ -1,8 +1,28 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
-import App from './js/App';
-import reportWebVitals from './js/reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import reportWebVitals from './js/reportWebVitals';
+import Upload from './pages/Upload';
+import Home from './pages/Home';
+import Layout from './pages/Layout';
+import NoPage from "./pages/NoPage";
+
+// import './css/index.css';
+import './css/App.css';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path="upload" element={<Upload/>}/>
+          <Route path="*" element={<NoPage/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,4 +34,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
